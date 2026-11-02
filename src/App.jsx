@@ -9,14 +9,14 @@ function App() {
   // Data keahlian praktikan (Tugas 1: Latihan Mandiri)
   const daftarSkill = [
     { id: 1, namaSkill: "HTML5 & CSS3", level: "Mahir" },
-    { id: 2, namaSkill: "JavaScript (ES6+)", level: "Menengah" },
-    { id: 3, namaSkill: "React JS", level: "Menengah" },
-    { id: 4, namaSkill: "Git & GitHub", level: "Mahir" },
-    { id: 5, namaSkill: "UI/UX & Figma", level: "Pemula" },
+    { id: 2, namaSkill: "UI/UX & Figma", level: "Mahir" },
+    { id: 3, namaSkill: "JavaScript (ES6+)", level: "Pemula" },
+    { id: 4, namaSkill: "React JS", level: "Pemula" },
+    { id: 5, namaSkill: "Git & GitHub", level: "Menengah" },
     { id: 6, namaSkill: "Node.js & Express", level: "Pemula" },
   ];
 
-  // 1. Data daftar mata kuliah praktikum semester ini (Tugas 2: Pemisahan Modul)
+  // Data daftar mata kuliah praktikum semester ini (Tugas 2: Pemisahan Modul)
   const daftarPraktikum = [
     {
       id: 101,
@@ -48,7 +48,7 @@ function App() {
     },
   ];
 
-  // Data daftar proyek untuk showcase portofolio mini (Tugas 3: Laporan Mandiri)
+  // Data daftar proyek yang terhubung ke repositori GitHub user (Tugas 3: Laporan Mandiri)
   const daftarProyek = [
     {
       id: 1,
@@ -84,44 +84,97 @@ function App() {
     },
   ];
 
-
-  // 2. Fungsi penanganan interaksi event tombol
+  // Fungsi penanganan interaksi event tombol
   const notifikasiSapaan = () => {
     alert(
-      "Selamat datang di Modul 1! Anda berhasil menguasai fondasi arsitektur React JS, komponen modular, props, dan list rendering.",
+      "Selamat datang di Modul 1! Anda berhasil menguasai fondasi arsitektur React JS, komponen modular, props, list rendering, dan estetika antarmuka profesional.",
     );
   };
 
   return (
     <div
       style={{
-        maxWidth: "880px",
-        margin: "40px auto",
-        padding: "0 24px 60px 24px",
-        fontFamily: "Arial, sans-serif",
+        maxWidth: "920px",
+        margin: "36px auto",
+        padding: "0 20px 80px 20px",
       }}
     >
-      {/* Header Halaman */}
-      <header style={{ textAlign: "center", marginBottom: "36px" }}>
-        <h1 style={{ color: "#1B365D", margin: "0 0 8px 0" }}>
-          Praktikum Pemrograman Web
-        </h1>
-        <p style={{ color: "#666", fontSize: "15px", margin: 0 }}>
-          Laboratorium Informatika - Modul 1: Pengenalan React JS &amp; Vite
-        </p>
+      {/* Top Utility Bar (Ornamen Grid Blueprint Minimalis) */}
+      <header
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+          paddingBottom: "14px",
+          marginBottom: "28px",
+          borderBottom: "1.5px dashed rgba(0, 0, 0, 0.2)",
+        }}
+      >
+        <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+          <span
+            style={{
+              width: "8px",
+              height: "8px",
+              borderRadius: "50%",
+              backgroundColor: "#111113",
+            }}
+          />
+          <span
+            style={{
+              fontFamily: "'Space Mono', monospace",
+              fontSize: "12px",
+              fontWeight: "700",
+              color: "#111113",
+              letterSpacing: "0.5px",
+            }}
+          >
+            [PRAKTIKUM WEB // MODUL 01]
+          </span>
+        </div>
+        <span
+          style={{
+            fontFamily: "'Space Mono', monospace",
+            fontSize: "11px",
+            color: "#71717A",
+          }}
+        >
+          REACT_V19 + VITE
+        </span>
       </header>
 
       {/* Bagian 1: Profil Mahasiswa Praktikan (Tugas 1: Integrasi BadgeSkill) */}
-      <section style={{ marginBottom: "36px" }}>
-        <h2
+      <section style={{ marginBottom: "40px" }}>
+        <div
           style={{
-            color: "#2C3E50",
-            borderBottom: "2px solid #E1E4E8",
-            paddingBottom: "8px",
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            marginBottom: "14px",
           }}
         >
-          Profil Mahasiswa Praktikan
-        </h2>
+          <h2
+            style={{
+              fontFamily: "'Space Grotesk', sans-serif",
+              fontSize: "16px",
+              fontWeight: "800",
+              color: "#111113",
+              margin: 0,
+              letterSpacing: "-0.3px",
+            }}
+          >
+            [01 // PROFIL MAHASISWA PRAKTIKAN]
+          </h2>
+          <span
+            style={{
+              fontFamily: "'Space Mono', monospace",
+              fontSize: "11px",
+              color: "#A1A1AA",
+            }}
+          >
+            MODULAR_COMPONENT
+          </span>
+        </div>
+
         <KartuProfil
           nama="Muhammad Fatur Rahman"
           npm="243040094"
@@ -132,38 +185,92 @@ function App() {
         />
       </section>
 
-      {/* Bagian 2: Daftar Rencana Praktikum Semester (Tugas 2: Pemisahan Modul ItemMatkul) */}
-      <section style={{ marginBottom: "36px" }}>
-        <h2
+      {/* Bagian 2: Daftar Rencana Praktikum Semester (Tugas 2: ItemMatkul List Rendering) */}
+      <section style={{ marginBottom: "44px" }}>
+        <div
           style={{
-            color: "#2C3E50",
-            borderBottom: "2px solid #E1E4E8",
-            paddingBottom: "8px",
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            marginBottom: "14px",
           }}
         >
-          Daftar Rencana Praktikum Semester (List Rendering)
-        </h2>
-        <div style={{ display: "grid", gap: "12px" }}>
+          <h2
+            style={{
+              fontFamily: "'Space Grotesk', sans-serif",
+              fontSize: "16px",
+              fontWeight: "800",
+              color: "#111113",
+              margin: 0,
+              letterSpacing: "-0.3px",
+            }}
+          >
+            [02 // DAFTAR RENCANA PRAKTIKUM SEMESTER]
+          </h2>
+          <span
+            style={{
+              fontFamily: "'Space Mono', monospace",
+              fontSize: "11px",
+              color: "#A1A1AA",
+            }}
+          >
+            ITEM_MATKUL.MAP()
+          </span>
+        </div>
+
+        <div style={{ display: "grid", gap: "10px" }}>
           {daftarPraktikum.map((matkul) => (
             <ItemMatkul key={matkul.id} {...matkul} />
           ))}
         </div>
       </section>
 
-      {/* Bagian 3: Showcase Portofolio Mini (Tugas 3: Tugas Terstruktur) */}
-      <section style={{ marginBottom: "36px" }}>
-        <h2
+      {/* Bagian 3: Showcase Portofolio Mini (Tugas 3: KartuProyek) */}
+      <section id="showcase-portofolio" style={{ marginBottom: "48px" }}>
+        <div
           style={{
-            color: "#2C3E50",
-            borderBottom: "2px solid #E1E4E8",
-            paddingBottom: "8px",
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "flex-end",
+            marginBottom: "16px",
           }}
         >
-          Showcase Portofolio Mini
-        </h2>
-        <p style={{ color: "#666", fontSize: "14px", marginTop: "-4px" }}>
-          Koleksi proyek pilihan yang dikembangkan menggunakan fondasi rekayasa perangkat lunak modern.
-        </p>
+          <div>
+            <h2
+              style={{
+                fontFamily: "'Space Grotesk', sans-serif",
+                fontSize: "16px",
+                fontWeight: "800",
+                color: "#111113",
+                margin: "0 0 4px 0",
+                letterSpacing: "-0.3px",
+              }}
+            >
+              [03 // SHOWCASE PORTOFOLIO MINI]
+            </h2>
+            <p
+              style={{
+                color: "#71717A",
+                fontSize: "13px",
+                margin: 0,
+                fontFamily: "'Space Grotesk', sans-serif",
+              }}
+            >
+              Koleksi karya web yang terhubung langsung ke repositori GitHub resmi.
+            </p>
+          </div>
+          <span
+            style={{
+              fontFamily: "'Space Mono', monospace",
+              fontSize: "11px",
+              color: "#A1A1AA",
+              display: "none",
+            }}
+          >
+            4_PROJECTS
+          </span>
+        </div>
+
         <div
           style={{
             display: "grid",
@@ -171,30 +278,51 @@ function App() {
             gap: "16px",
           }}
         >
-          {daftarProyek.map((proyek) => (
-            <KartuProyek key={proyek.id} {...proyek} />
+          {daftarProyek.map((proyek, idx) => (
+            <KartuProyek key={proyek.id} index={idx + 1} {...proyek} />
           ))}
         </div>
       </section>
 
-      {/* Tombol Interaktivitas Event */}
-      <div style={{ textAlign: "center", marginTop: "40px" }}>
+      {/* Tombol Interaktivitas Event (Gaya Brutalist Monochrome) */}
+      <div style={{ textAlign: "center", marginTop: "44px" }}>
         <button
           onClick={notifikasiSapaan}
           style={{
-            backgroundColor: "#1B365D",
+            backgroundColor: "#111113",
             color: "#FFFFFF",
-            padding: "12px 26px",
-            border: "none",
-            borderRadius: "6px",
+            padding: "14px 28px",
+            border: "1.5px solid #111113",
+            borderRadius: "32px",
             cursor: "pointer",
-            fontWeight: "bold",
-            fontSize: "14px",
-            boxShadow: "0 2px 5px rgba(0, 0, 0, 0.15)",
-            transition: "background-color 0.2s ease",
+            fontWeight: "700",
+            fontFamily: "'Space Grotesk', sans-serif",
+            fontSize: "13px",
+            letterSpacing: "0.4px",
+            boxShadow: "0 4px 14px rgba(0, 0, 0, 0.12)",
+            display: "inline-flex",
+            alignItems: "center",
+            gap: "10px",
+            transition: "all 0.2s ease",
+          }}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.backgroundColor = "#FFFFFF";
+            e.currentTarget.style.color = "#111113";
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.backgroundColor = "#111113";
+            e.currentTarget.style.color = "#FFFFFF";
           }}
         >
-          Uji Interaktivitas Event (Klik Disini)
+          <span
+            style={{
+              width: "7px",
+              height: "7px",
+              borderRadius: "50%",
+              backgroundColor: "#F59E0B",
+            }}
+          />
+          <span>[ UJI INTERAKTIVITAS EVENT // KLIK DISINI ]</span>
         </button>
       </div>
     </div>

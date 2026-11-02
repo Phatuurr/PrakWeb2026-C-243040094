@@ -1,19 +1,45 @@
 :root {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   line-height: 1.5;
   font-weight: 400;
   color-scheme: light;
-  color: #2c3e50;
-  background-color: #ffffff;
+  color: #111113;
+  background-color: #fafafa;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
 }
 
 body {
   margin: 0;
   padding: 0;
   min-height: 100vh;
-  background-color: #ffffff;
+  background-color: #fbfbfb;
+  /* Ornamen grid arsitektural minimalis */
+  background-image: 
+    linear-gradient(to right, rgba(0, 0, 0, 0.045) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.045) 1px, transparent 1px);
+  background-size: 36px 36px;
+  background-position: center top;
+  color: #111113;
 }
 
 #root {
   min-height: 100vh;
+}
+
+/* Scrollbar minimalis */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+::-webkit-scrollbar-thumb {
+  background: #111113;
+  border-radius: 3px;
 }
