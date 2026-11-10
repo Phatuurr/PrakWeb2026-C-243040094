@@ -1,0 +1,76 @@
+/* Styling untuk Catatan Keuangan Mini */
+.keuangan-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.keuangan-stat {
+  background: #F9FAFB;
+  border: 1px solid #E5E7EB;
+  border-radius: 8px;
+  padding: 12px;
+  text-align: center;
+}
+
+.keuangan-stat h4 {
+  margin: 0 0 6px 0;
+  font-size: 13px;
+  color: #6B7280;
+  font-weight: 500;
+}
+
+.keuangan-stat p {
+  margin: 0;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.keuangan-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 0;
+  border-bottom: 1px solid #E5E7EB;
+}
+
+.keuangan-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.keuangan-keterangan {
+  font-weight: 600;
+  color: #1F2937;
+}
+
+.keuangan-nominal {
+  font-weight: bold;
+  font-size: 15px;
+}
+
+.teks-pemasukan {
+  color: #059669; /* Hijau */
+}
+
+.teks-pengeluaran {
+  color: #DC2626; /* Merah */
+}
+
+.select-input {
+  padding: 10px;
+  border: 1px solid #D0D7DE;
+  border-radius: 6px;
+  font-size: 14px;
+  background: white;
+  cursor: pointer;
+}
+
+.form-keuangan {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
