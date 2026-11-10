@@ -1,28 +1,34 @@
 // src/keuangan/ItemTransaksi.jsx
-function ItemTransaksi({ transaksi, onHapus }) {
+function ItemTransaksi({ transaksi, onHapus, index }) {
   const isPemasukan = transaksi.jenis === 'pemasukan';
+  const no = String(index + 1).padStart(2, '0');
 
   const formatRupiah = (angka) => {
     return 'Rp ' + Number(angka).toLocaleString('id-ID');
   };
 
   return (
-    <li className="keuangan-item">
-      <div className="keuangan-info">
+    <li className="item-keuangan-row">
+      <div className="item-left">
+        <span className={`keuangan-badge-type ${isPemasukan ? 'pemasukan' : 'pengeluaran'}`}>
+          TRX-{no} // {isPemasukan ? 'IN' : 'OUT'}
+        </span>
         <span className="keuangan-keterangan">{transaksi.keterangan}</span>
-        <span className={isPemasukan ? 'keuangan-nominal teks-pemasukan' : 'keuangan-nominal teks-pengeluaran'}>
+      </div>
+
+      <div className="item-right">
+        <span className={`keuangan-amount-pill ${isPemasukan ? 'pemasukan' : 'pengeluaran'}`}>
           {isPemasukan ? '+' : '-'} {formatRupiah(transaksi.nominal)}
         </span>
+        <button
+          className="tombol tombol-merah tombol-kecil"
+          onClick={() => onHapus(transaksi.id)}
+        >
+          Hapus
+        </button>
       </div>
-      <button
-        className="tombol tombol-merah tombol-kecil"
-        onClick={() => onHapus(transaksi.id)}
-      >
-        Hapus
-      </button>
     </li>
   );
 }
 
 export default ItemTransaksi;
-

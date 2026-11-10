@@ -1,1 +1,37 @@
-/* src/index.css */
+/* Global & Reset */
+:root {
+  --bg-main: #FAFAFA;
+  --bg-card: #FFFFFF;
+  --border-color: #E2E4E9;
+  --border-card: #1E2024;
+  --text-main: #111418;
+  --text-muted: #6C727F;
+  --font-mono: 'JetBrains Mono', monospace;
+  --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  --accent-green: #10B981;
+  --accent-red: #EF4444;
+  --accent-blue: #3B82F6;
+  --accent-yellow: #F59E0B;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-sans);
+  color: var(--text-main);
+  background-color: #F8F9FA;
+  /* Blueprint / engineering grid background */
+  background-image: 
+    linear-gradient(to right, rgba(0, 0, 0, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.04) 1px, transparent 1px);
+  background-size: 24px 24px;
+  min-height: 100vh;
+}
+
+code, pre, .mono-text {
+  font-family: var(--font-mono);
+}

@@ -1,76 +1,129 @@
-/* Styling untuk Catatan Keuangan Mini */
-.keuangan-grid {
+/* src/keuangan/Keuangan.css */
+.keuangan-stats-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 12px;
-  margin-bottom: 20px;
+  margin-bottom: 24px;
 }
 
-.keuangan-stat {
-  background: #F9FAFB;
-  border: 1px solid #E5E7EB;
-  border-radius: 8px;
-  padding: 12px;
-  text-align: center;
+.keuangan-stat-card {
+  background: #FAFAFA;
+  border: 1.5px solid #E2E4E9;
+  border-radius: 12px;
+  padding: 14px 16px;
+  transition: border-color 0.2s;
 }
 
-.keuangan-stat h4 {
-  margin: 0 0 6px 0;
-  font-size: 13px;
-  color: #6B7280;
-  font-weight: 500;
+.keuangan-stat-card:hover {
+  border-color: #111418;
 }
 
-.keuangan-stat p {
-  margin: 0;
-  font-size: 16px;
-  font-weight: bold;
+.keuangan-stat-header {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 700;
+  color: #8C92A0;
+  letter-spacing: 0.06em;
+  margin-bottom: 6px;
+  text-transform: uppercase;
 }
 
-.keuangan-item {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 12px 0;
-  border-bottom: 1px solid #E5E7EB;
+.keuangan-stat-value {
+  font-family: var(--font-mono);
+  font-size: 18px;
+  font-weight: 800;
 }
 
-.keuangan-info {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
+.keuangan-stat-value.pemasukan {
+  color: #059669;
 }
 
-.keuangan-keterangan {
+.keuangan-stat-value.pengeluaran {
+  color: #DC2626;
+}
+
+.keuangan-stat-value.saldo {
+  color: #111418;
+}
+
+.select-blueprint {
+  padding: 11px 14px;
+  background: #FAFAFA;
+  border: 1.5px solid #D1D5DB;
+  border-radius: 10px;
+  font-family: var(--font-mono);
+  font-size: 12px;
   font-weight: 600;
-  color: #1F2937;
-}
-
-.keuangan-nominal {
-  font-weight: bold;
-  font-size: 15px;
-}
-
-.teks-pemasukan {
-  color: #059669; /* Hijau */
-}
-
-.teks-pengeluaran {
-  color: #DC2626; /* Merah */
-}
-
-.select-input {
-  padding: 10px;
-  border: 1px solid #D0D7DE;
-  border-radius: 6px;
-  font-size: 14px;
-  background: white;
+  color: #111418;
+  outline: none;
   cursor: pointer;
 }
 
-.form-keuangan {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
+.select-blueprint:focus {
+  border-color: #111418;
+  background: #FFFFFF;
 }
 
+.item-keuangan-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 18px;
+  background: #FFFFFF;
+  border: 1.5px solid #1A1D20;
+  border-radius: 12px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+  transition: all 0.15s ease;
+}
+
+.item-keuangan-row:hover {
+  border-color: #10B981;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.04);
+}
+
+.keuangan-badge-type {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 700;
+  padding: 4px 8px;
+  border-radius: 6px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.keuangan-badge-type.pemasukan {
+  background: #111418;
+  color: #34D399;
+}
+
+.keuangan-badge-type.pengeluaran {
+  background: #111418;
+  color: #F87171;
+}
+
+.keuangan-keterangan {
+  font-size: 14px;
+  font-weight: 600;
+  color: #111418;
+}
+
+.keuangan-amount-pill {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+}
+
+.keuangan-amount-pill.pemasukan {
+  background: #ECFDF5;
+  color: #059669;
+  border-color: #A7F3D0;
+}
+
+.keuangan-amount-pill.pengeluaran {
+  background: #FEF2F2;
+  color: #DC2626;
+  border-color: #FECACA;
+}

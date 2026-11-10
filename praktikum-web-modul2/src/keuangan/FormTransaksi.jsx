@@ -4,7 +4,7 @@ import { useState } from 'react';
 function FormTransaksi({ onTambahTransaksi }) {
   const [keterangan, setKeterangan] = useState('');
   const [nominal, setNominal] = useState('');
-  const [jenis, setJenis] = useState('pemasukan'); // 'pemasukan' atau 'pengeluaran'
+  const [jenis, setJenis] = useState('pemasukan');
 
   const tidakValid = keterangan.trim() === '' || nominal === '' || Number(nominal) <= 0;
 
@@ -12,26 +12,24 @@ function FormTransaksi({ onTambahTransaksi }) {
     e.preventDefault();
     if (tidakValid) return;
 
-    // Petunjuk Modul: ubah nominal menjadi angka dengan Number(nominal)
     onTambahTransaksi({
       keterangan: keterangan.trim(),
       nominal: Number(nominal),
       jenis: jenis,
     });
 
-    // Reset formulir terkendali
     setKeterangan('');
     setNominal('');
     setJenis('pemasukan');
   };
 
   return (
-    <form className="form-keuangan" onSubmit={handleSubmit}>
-      <div className="baris">
+    <form onSubmit={handleSubmit} style={{ marginBottom: '20px' }}>
+      <div className="baris" style={{ marginBottom: '10px' }}>
         <input
           className="input"
           type="text"
-          placeholder="Keterangan transaksi (misal: Beli Buku)"
+          placeholder="Keterangan transaksi (misal: Uang Saku, Beli Buku)"
           value={keterangan}
           onChange={(e) => setKeterangan(e.target.value)}
         />
@@ -48,16 +46,16 @@ function FormTransaksi({ onTambahTransaksi }) {
         />
 
         <select
-          className="select-input"
+          className="select-blueprint"
           value={jenis}
           onChange={(e) => setJenis(e.target.value)}
         >
-          <option value="pemasukan">Pemasukan (+)</option>
-          <option value="pengeluaran">Pengeluaran (-)</option>
+          <option value="pemasukan">+ Pemasukan</option>
+          <option value="pengeluaran">- Pengeluaran</option>
         </select>
 
         <button className="tombol" type="submit" disabled={tidakValid}>
-          Simpan
+          + Catat
         </button>
       </div>
     </form>
@@ -65,4 +63,3 @@ function FormTransaksi({ onTambahTransaksi }) {
 }
 
 export default FormTransaksi;
-

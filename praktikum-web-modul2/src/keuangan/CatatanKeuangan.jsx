@@ -6,7 +6,6 @@ import ItemTransaksi from './ItemTransaksi';
 import './Keuangan.css';
 
 function CatatanKeuangan() {
-  // (f) Data tersimpan di localStorage menggunakan useEffect & lazy initializer
   const [daftarTransaksi, setDaftarTransaksi] = useState(() => {
     const dataTersimpan = localStorage.getItem('catatan-keuangan');
     if (dataTersimpan) {
@@ -14,16 +13,14 @@ function CatatanKeuangan() {
     }
     return [
       { id: 1, keterangan: 'Uang Saku Bulanan', nominal: 500000, jenis: 'pemasukan' },
-      { id: 2, keterangan: 'Beli Buku Pemrograman', nominal: 120000, jenis: 'pengeluaran' },
+      { id: 2, keterangan: 'Beli Buku Pemrograman React', nominal: 120000, jenis: 'pengeluaran' },
     ];
   });
 
-  // Sinkronisasi data ke localStorage setiap daftarTransaksi berubah
   useEffect(() => {
     localStorage.setItem('catatan-keuangan', JSON.stringify(daftarTransaksi));
   }, [daftarTransaksi]);
 
-  // Tambah transaksi baru (immutable update dengan spread)
   const tambahTransaksi = (dataBaru) => {
     const transaksiBaru = {
       id: Date.now(),
@@ -32,12 +29,10 @@ function CatatanKeuangan() {
     setDaftarTransaksi([transaksiBaru, ...daftarTransaksi]);
   };
 
-  // Hapus transaksi (immutable update dengan .filter)
   const hapusTransaksi = (id) => {
     setDaftarTransaksi(daftarTransaksi.filter((t) => t.id !== id));
   };
 
-  // (c) Nilai turunan dihitung langsung dari state: Total Pemasukan, Pengeluaran, dan Saldo
   const totalPemasukan = daftarTransaksi
     .filter((t) => t.jenis === 'pemasukan')
     .reduce((acc, curr) => acc + curr.nominal, 0);
@@ -53,49 +48,65 @@ function CatatanKeuangan() {
   };
 
   return (
-    <Kartu judul="Tugas 3: Catatan Keuangan Mini">
-      {/* Ringkasan Saldo Otomatis */}
-      <div className="keuangan-grid">
-        <div className="keuangan-stat">
-          <h4>Total Pemasukan</h4>
-          <p className="teks-pemasukan">{formatRupiah(totalPemasukan)}</p>
-        </div>
-        <div className="keuangan-stat">
-          <h4>Total Pengeluaran</h4>
-          <p className="teks-pengeluaran">{formatRupiah(totalPengeluaran)}</p>
-        </div>
-        <div className="keuangan-stat">
-          <h4>Sisa Saldo</h4>
-          <p style={{ color: totalSaldo < 0 ? '#DC2626' : '#1B365D' }}>
-            {formatRupiah(totalSaldo)}
-          </p>
-        </div>
+    <div className="section-group">
+      <div className="section-blueprint-header">
+        <span className="section-label">[03 // CATATAN KEUANGAN MINI - TUGAS MANDIRI]</span>
+        <span className="section-tag">LOCAL_STORAGE_STATE</span>
       </div>
 
-      {/* (a) Formulir Terkendali */}
-      <FormTransaksi onTambahTransaksi={tambahTransaksi} />
+      <Kartu
+        subheader="MANAJEMEN ARUS KAS PRAKTIKAN"
+        badgeText={`${daftarTransaksi.length} Catatan`}
+        footerNote="LABORATORIUM PEMROGRAMAN WEB // CATATAN KEUANGAN"
+      >
+        {/* Ringkasan Saldo 3 Kolom */}
+        <div className="keuangan-stats-grid">
+          <div className="keuangan-stat-card">
+            <div className="keuangan-stat-header">[ PEMASUKAN ]</div>
+            <div className="keuangan-stat-value pemasukan">{formatRupiah(totalPemasukan)}</div>
+          </div>
+          <div className="keuangan-stat-card">
+            <div className="keuangan-stat-header">[ PENGELUARAN ]</div>
+            <div className="keuangan-stat-value pengeluaran">{formatRupiah(totalPengeluaran)}</div>
+          </div>
+          <div className="keuangan-stat-card">
+            <div className="keuangan-stat-header">[ SISA SALDO ]</div>
+            <div className={`keuangan-stat-value ${totalSaldo < 0 ? 'pengeluaran' : 'saldo'}`}>
+              {formatRupiah(totalSaldo)}
+            </div>
+          </div>
+        </div>
 
-      <h3 style={{ marginTop: '24px', marginBottom: '8px', fontSize: '16px', color: '#1B365D' }}>
-        Riwayat Transaksi
-      </h3>
+        {/* Form Tambah Transaksi */}
+        <FormTransaksi onTambahTransaksi={tambahTransaksi} />
 
-      {/* (e) Pesan khusus jika belum ada transaksi (Conditional Rendering) */}
-      {daftarTransaksi.length === 0 ? (
-        <p className="kosong">Belum ada transaksi. Silakan catat transaksi baru di atas.</p>
-      ) : (
-        <ul className="daftar">
-          {daftarTransaksi.map((transaksi) => (
-            <ItemTransaksi
-              key={transaksi.id}
-              transaksi={transaksi}
-              onHapus={hapusTransaksi}
-            />
-          ))}
-        </ul>
-      )}
-    </Kartu>
+        {/* Riwayat Transaksi */}
+        <div style={{ marginBottom: '14px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+          <span style={{ fontFamily: 'var(--font-mono)', fontSize: '11px', fontWeight: 700, color: '#6C727F' }}>
+            [ DAFTAR TRANSAKSI TERCATAT ]
+          </span>
+          <span style={{ fontFamily: 'var(--font-mono)', fontSize: '11px', color: '#9CA3AF' }}>
+            {daftarTransaksi.length} entri
+          </span>
+        </div>
+
+        {daftarTransaksi.length === 0 ? (
+          <p className="kosong">Belum ada riwayat transaksi. Tambahkan data baru di atas.</p>
+        ) : (
+          <ul className="daftar">
+            {daftarTransaksi.map((transaksi, idx) => (
+              <ItemTransaksi
+                key={transaksi.id}
+                index={idx}
+                transaksi={transaksi}
+                onHapus={hapusTransaksi}
+              />
+            ))}
+          </ul>
+        )}
+      </Kartu>
+    </div>
   );
 }
 
 export default CatatanKeuangan;
-

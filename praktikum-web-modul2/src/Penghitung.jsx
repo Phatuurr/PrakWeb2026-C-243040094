@@ -1,9 +1,8 @@
-// src/Penghitung.jsx (VERSI BENAR)
+// src/Penghitung.jsx
 import { useState } from 'react';
 import Kartu from './Kartu';
 
 function Penghitung() {
-  // jumlah = nilai saat ini, setJumlah = fungsi untuk mengubahnya, 0 = nilai awal
   const [jumlah, setJumlah] = useState(0);
 
   const tambah = () => {
@@ -15,17 +14,41 @@ function Penghitung() {
   };
 
   return (
-    <Kartu judul="Penghitung Klik">
-      <p>Tombol sudah diklik {jumlah} kali</p>
-      {/* Conditional rendering: pesan ini hanya muncul jika jumlah >= 5 */}
-      {jumlah >= 5 && <p>Wah, kamu rajin sekali mengklik!</p>}
-      <div className="baris">
-        <button className="tombol" onClick={tambah}>Klik Saya</button>
-        <button className="tombol tombol-merah" onClick={ulangi}>Ulangi</button>
+    <div className="section-group">
+      <div className="section-blueprint-header">
+        <span className="section-label">[01 // PENGHITUNG KLIK & STATE COUNTER]</span>
+        <span className="section-tag">HOOK_USESTATE</span>
       </div>
-    </Kartu>
+
+      <Kartu 
+        subheader="COUNTER EXPERIMENT // MODUL 02" 
+        badgeText="Status: Aktif"
+        footerNote="LABORATORIUM PEMROGRAMAN WEB // IF UNPAS"
+      >
+        <div className="penghitung-box">
+          <div className="penghitung-metric">
+            <span className="penghitung-label">Total Klik Tercatat</span>
+            <span className="penghitung-value">{jumlah}</span>
+          </div>
+          <div className="baris">
+            <button className="tombol" onClick={tambah}>
+              + Klik Saya
+            </button>
+            <button className="tombol tombol-merah" onClick={ulangi}>
+              Reset
+            </button>
+          </div>
+        </div>
+
+        {/* Conditional rendering */}
+        {jumlah >= 5 && (
+          <div className="badge-notice">
+            <span>⚡ Wah, kamu rajin sekali mengklik! ({jumlah} klik)</span>
+          </div>
+        )}
+      </Kartu>
+    </div>
   );
 }
 
 export default Penghitung;
-
